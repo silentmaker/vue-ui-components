@@ -1,6 +1,8 @@
 <template>
   <div class="range-container">
-    <div class="track" ref='track'>
+    <div class="label"><slot></slot></div>
+    <div class="track" ref='track'
+      :style="{width: size ? `${size}px` : '200px'}">
       <div class="fill" :style="{width: `${current}px`}"></div>
       <div :class="['handle', dragging ? 'active' : '']"
         :style="{transform: `translateX(${current}px)`}"
@@ -34,7 +36,7 @@ export default {
     },
     tooltip: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   data() {
@@ -84,6 +86,7 @@ export default {
     },
     drop() {
       this.dragging = false;
+      this.$emit('change', this.value);
     },
   },
   destroyed() {
@@ -95,15 +98,20 @@ export default {
 
 <style lang="less" scoped>
 .range-container {
-  margin: 10px;
-  height: 24px;
+  display: inline-block;
 
+  .label {
+    display: inline-block;
+    margin-right: 10px;
+  }
   .track {
+    display: inline-block;
     position: relative;
-    top: 10px;
+    top: -4px;
     height: 4px;
     border-radius: 2px;
     background-color: #f1f1f2;
+
     .fill {
       position: absolute;
       top: 0;

@@ -11,7 +11,7 @@ export default {
   DEFAULT: {
     id: 'default-toast',
     status: 'success',
-    duration: 2,
+    duration: 1,
     transition: 'fade',
   },
   data() {

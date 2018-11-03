@@ -5,13 +5,13 @@
         <th :key="index" v-for="(column, index) in columns">{{ column.label }}</th>
       </tr>
     </thead>
-    <tbody>
-      <tr :key="index" v-for="(item, index) in items">
+    <transition-group tag="tbody" name="fade">
+      <tr :key="item.id" v-for="(item, index) in items">
         <item-field :key="idx" v-for="(column, idx) in columns"
           :column="column" :item="item" :index="index">
         </item-field>
       </tr>
-    </tbody>
+    </transition-group>
   </table>
 </template>
 
@@ -58,18 +58,24 @@ table.list {
   border-spacing: 0;
   thead {
     th {
+      font-size: 16px;
+      font-weight: normal;
       background-color: #f1f1f2;
       text-align: left;
       line-height: 42px;
+      color: #666;
+      padding: 0 10px;
     }
   }
   tbody {
     tr {
       border-bottom: solid 1px #f1f1f2;
       td {
-        line-height: 36px;
+        line-height: 42px;
         vertical-align: middle;
         white-space: nowrap;
+        padding: 0 10px;
+        font-size: 14px;
       }
     }
   }

@@ -1,29 +1,28 @@
 <template>
   <div id="app">
-    <list :items="items">
-      <list-item label="NAME" field="name"></list-item>
-      <list-item label="AGE" field="age"></list-item>
-      <list-item label="NO.AGE" field="age" :parse="parseAge"></list-item>
-      <list-item label="RANGE">
-        <template slot-scope="{ item }">
-          <range :min="1" :max="40" :tooltip="true" :parse="age => `${age}岁`"
-            v-model="item.age">
-          </range>
-        </template>
-      </list-item>
-      <list-item label="OPERATE">
+    <range :size="150" :min="1" :max="20" v-model="pageLimit">
+      <h4>Page Limit</h4>
+    </range>
+    <list :items="items.slice(0, pageLimit)">
+      <list-item label="Event Title" field="title"></list-item>
+      <list-item label="Start" field="started_at"
+        :parse="date => date.replace(/\-/g, '/')"></list-item>
+      <list-item label="End" field="ended_at"
+        :parse="date => date.replace(/\-/g, '/')"></list-item>
+      <list-item label="Location" field="location"></list-item>
+      <list-item label="Manage">
         <template slot-scope="{ index }">
-          <button @click="deleteItem(index)">delete</button>
+          <button @click="deleteItem(index)">Delete</button>
         </template>
       </list-item>
     </list>
+    <div class="pagination">{{ pageLimit }} Item Per Page</div>
   </div>
 </template>
 
 <script>
-import list from './components/list/list.vue';
-import listItem from './components/list/list-item.vue';
-import range from './components/range.vue';
+import { list, listItem, range } from './ui';
+import listData from './dummy';
 
 export default {
   name: 'app',
@@ -34,18 +33,11 @@ export default {
   },
   data() {
     return {
-      items: [
-        { name: 'john', age: 12 },
-        { name: 'elvin', age: 13 },
-        { name: 'joe', age: 14 },
-        { name: 'amy', age: 15 },
-      ],
+      items: listData,
+      pageLimit: 10,
     };
   },
   methods: {
-    parseAge(age) {
-      return `no.${age}`;
-    },
     deleteItem(index) {
       this.items.splice(index, 1);
       this.$toast('Successfully Deleted!');
@@ -53,3 +45,25 @@ export default {
   },
 };
 </script>
+
+<style lang="less">
+body,ul,table {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  padding: 30px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.pagination {
+  text-align: center;
+  margin: 20px;
+  font-size: 12px;
+  color: #666;
+}
+</style>
