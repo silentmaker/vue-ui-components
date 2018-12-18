@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import app from './app.vue';
+import demo from './demo.vue';
 import { toast } from './ui';
 
 Vue.use(toast);
@@ -7,5 +7,5 @@ Vue.use(toast);
 Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(app),
+  render: h => h(demo),
 }).$mount('#app');
