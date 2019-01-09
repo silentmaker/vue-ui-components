@@ -1,0 +1,30 @@
+.km-switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  vertical-align: middle;
+  background-color: #09bb07;
+  border-radius: 14px;
+  transition: background-color 0.4s;
+  cursor: pointer;
+
+  .handle {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: background-color,transform 0.3s;
+  }
+  &.off {
+    background-color: #cad0da;
+
+    .handle {
+      transform: translateX(-14px);
+      background-color: #fff;
+    }
+  }
+}

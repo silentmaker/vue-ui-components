@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import demo from './demo.vue';
-import { toast } from './ui';
 
-Vue.use(toast);
+import './themes/swan/index.less';
 
 Vue.config.productionTip = false;
 
