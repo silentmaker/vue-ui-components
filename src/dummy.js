@@ -1,5 +1,4 @@
-/* eslint-disable */
-const data = [
+const objectArray = [
   { id: 1, title: 'JS Conf', started_at: '2018-10-09', ended_at: '2018-10-10', location: 'Guanghzhou' },
   { id: 2, title: 'ECMA', started_at: '2018-03-09', ended_at: '2018-10-10', location: 'Shenzhen' },
   { id: 3, title: 'WE Conf', started_at: '2018-01-09', ended_at: '2018-10-10', location: 'Hanzhou' },
@@ -22,4 +21,6 @@ const data = [
   { id: 20, title: 'RIM', started_at: '2018-12-09', ended_at: '2018-12-10', location: 'Kunming' },
 ];
 
-export default data;
+export default {
+  objectArray,
+};

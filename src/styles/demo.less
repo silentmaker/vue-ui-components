@@ -1,0 +1,38 @@
+#app {
+  display: flex;
+  min-height: 100vh;
+
+  .sidebar {
+    flex: 1 1 20%;
+    padding: 20px;
+    border-right: solid 1px #f1f1f1;
+  }
+  .content {
+    flex: 1 1 80%;
+
+    .showcase {
+      padding: 20px;
+      border-top: solid 1px #f1f1f1;
+
+      .showcase-title {
+        position: relative;
+        font-size: 20px;
+        font-family: cursive, monospace;
+        padding-left: 20px;
+        margin-bottom: 20px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 4px;
+          left: 0;
+          display: block;
+          width: 6px;
+          height: 16px;
+          background-color: #008dfc;
+          // transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
