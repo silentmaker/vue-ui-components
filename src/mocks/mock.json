@@ -1,0 +1,10 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" },
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "test": {
+    "status": "success",
+    "message": "mock server is working now..."
+  }
+}

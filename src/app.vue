@@ -17,19 +17,22 @@
 
 <script>
 import components from './components';
-import dummy from './dummy';
 
 export default {
-  name: 'demo',
+  name: 'app',
   data() {
     const names = Object.keys(components).sort();
 
     return {
-      dummy,
       components,
       componentNames: names,
       current: '',
     };
+  },
+  mounted() {
+    this.$http.get('/test').then(({ data }) => {
+      console.log(data);
+    });
   },
 };
 </script>

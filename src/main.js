@@ -1,10 +1,14 @@
+import axios from 'axios';
 import Vue from 'vue';
-import demo from './demo.vue';
+
+import app from './app.vue';
 
 import './themes/swan/index.less';
+
+Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(demo),
+  render: h => h(app),
 }).$mount('#app');
